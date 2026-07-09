@@ -6,11 +6,19 @@ interface Trilha {
 }
 
 interface TrilhaCatalogoProps {
+
   trilhas: Trilha[];
+
+  onSelecionar: (trilha: Trilha) => void;
+
 }
 
 function TrilhaCatalogo({
-  trilhas
+
+  trilhas,
+
+  onSelecionar
+
 }: TrilhaCatalogoProps) {
 
   if (trilhas.length === 0) {
@@ -40,11 +48,25 @@ function TrilhaCatalogo({
 
           <div className="card h-100 shadow">
 
-            <div className="card-header bg-success text-white">
+            <div className="card-header bg-primary text-white">
 
               <h5>
 
-                {trilha.disciplina}
+                <button
+
+                  className="btn btn-link text-white text-decoration-none fw-bold p-0"
+
+                  onClick={()=>{
+
+                  onSelecionar(trilha);
+
+                  }}
+
+                  >
+
+                  {trilha.disciplina}
+
+                </button>
 
               </h5>
 
